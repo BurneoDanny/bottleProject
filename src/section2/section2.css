@@ -1,0 +1,74 @@
+#bento1{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../imgs/bento3.jpg');
+    background-size: cover;
+    background-position: bottom;
+    border-radius: 25px;
+ 
+}
+
+#bento2{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../imgs/bento2.jpg');
+    background-size: cover;
+    background-position: bottom;
+    border-radius: 25px;
+ 
+}
+#bento3{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../imgs/bento4.jpg');
+    background-size: cover;
+    background-position: bottom;
+    border-radius: 25px;
+ 
+}
+#bento4{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../imgs/bento1.jpg');
+    background-size: cover;
+    background-position: 0 80%;
+    border-radius: 25px;
+ 
+}
+#bento5{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../imgs/botella3jpg.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 25px;
+ 
+}
+
+#bento6{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../imgs/botella2.jpg');
+    background-size: cover;
+    background-position: bottom;
+    border-radius: 25px;
+ 
+}

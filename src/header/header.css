@@ -1,0 +1,10 @@
+#background-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../imgs/botella2.jpg');
+    background-size: cover;
+    border-bottom: 10px solid #22535C;
+}

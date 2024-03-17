@@ -1,0 +1,13 @@
+#img5{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../imgs/img5.jpg');
+    background-size: cover;
+    background-position: bottom;
+    border-radius: 25px;
+ 
+}
+
