@@ -1,6 +1,6 @@
 export default function Section4() {
     return (
-        <div className="h-screen bg-black flex flex-col justify-center items-center mt-44 px-64 gap-16 z-10 relative">
+        <div className=" border border-white min-h-screen bg-black flex flex-col justify-center items-center  px-64 gap-16 z-10 relative">
             <div className="flex flex-col text-center justify-center items-center ">
                 <h1 className="text-white text-6xl font-medium">¿Cuánto más necesitamos ver?</h1>
                 <p className="text-white text-xl font-light">Es hora de enfrentar la realidad.</p>
