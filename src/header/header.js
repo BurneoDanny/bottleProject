@@ -27,6 +27,7 @@ export default function Header() {
             <div className='text-center text-white mb-4' id='animate'>
                 <h3 className=' text-3xl font-medium'>Salvando al</h3>
                 <h1 className='leading-none text-[15rem] font-semibold'>Mundo</h1>
+                <p>Creado por Susana Macias y Anthony Torres</p>
             </div>
         </div>
 
