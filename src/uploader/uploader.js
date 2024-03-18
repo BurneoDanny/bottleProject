@@ -1,58 +1,38 @@
 import { useState, useEffect } from "react";
-import * as tf from '@tensorflow/tfjs';
+import axios from "axios";
+
 
 export default function Uploader() {
-
     const [selectedImage, setSelectedImage] = useState(null);
-    const [model, setModel] = useState(null);
     const [prediction, setPrediction] = useState(null);
 
-    const modelJSON = `${process.env.REACT_APP_MODEL_JSON_URL}/models/model.json`;
-
-    useEffect(() => {
-
-        const loadModel = async () => {
-            console.log("Attempting to load model...");
-            try {
-                const model = await tf.loadLayersModel(modelJSON);
-                console.log("Model loaded:", model);
-                setModel(model);
-            } catch (e) {
-                console.log("[LOADING ERROR] info:", e);
-            }
-        };
-
-        loadModel();
-    }, []);
-
-
-
-
-    const handleFileChange = (event) => {
+    const handleFileChange = async (event) => {
         const file = event.target.files[0];
-        if (file && model) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setSelectedImage(reader.result);
-                predictImage(file);
-            };
-            reader.readAsDataURL(file);
+        if (file) {
+            const formData = new FormData();
+            formData.append('file', file);
+
+            try {
+                // Usa Axios para enviar la solicitud POST
+                const response = await axios.post(`http://localhost:5000/predict`, formData, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                });
+
+                console.log(response.data.prediction);
+                setPrediction(response.data.prediction);
+
+                // Lee y muestra la imagen seleccionada
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                    setSelectedImage(reader.result);
+                };
+                reader.readAsDataURL(file);
+            } catch (error) {
+                console.error('Error al enviar la imagen:', error);
+            }
         }
-    };
-
-    const predictImage = async (file) => {
-        const image = new Image();
-        image.src = URL.createObjectURL(file);
-        image.onload = async () => {
-            const tensor = tf.browser.fromPixels(image).toFloat();
-            const grayscale = tf.image.rgbToGrayscale(tensor);
-            const resized = tf.image.resizeNearestNeighbor(grayscale, [150, 150]).expandDims();
-
-            const prediction = model.predict(resized);
-            const result = await prediction.data();
-
-            setPrediction(result[0] > 0.5 ? 'Botella' : 'Botellon');
-        };
     };
 
     return (
@@ -67,9 +47,9 @@ export default function Uploader() {
             <section>
                 {selectedImage && (
                     <div className="mt-4 flex flex-col justify-center items-center gap-4">
-                        <h1 className="font-bold text-6xl">Resultados</h1>
+                        <h1 className="font-bold text-6xl text-white">Resultados</h1>
                         <img className="rounded-md h-96 w-96" src={selectedImage} alt="Uploaded bottle-img" />
-                        <h1 className="font-bold text-xl">{prediction}</h1>
+                        <h1 className="font-bold text-xl text-white">{prediction}</h1>
                     </div>
                 )}
             </section>
